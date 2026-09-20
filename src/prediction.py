@@ -1,6 +1,6 @@
 import os
 import joblib
-import pandas as pd
+import numpy as np
 
 
 # --------------------------------------------------
@@ -48,29 +48,30 @@ FEATURES = [
 
 
 # --------------------------------------------------
-# Prediction function
+# Prediction
 # --------------------------------------------------
 
 def predict_defect(metrics):
 
-    # Create dataframe in the exact feature order
-    input_data = pd.DataFrame(
-        [[metrics[feature] for feature in FEATURES]],
-        columns=FEATURES
+    values = [
+        float(metrics[feature])
+        for feature in FEATURES
+    ]
+
+    input_data = np.array(
+        [values],
+        dtype=np.float32
     )
 
-    # Get probability of defect
     probability = float(
         model.predict_proba(input_data)[0][1]
     )
 
-    # Project threshold
     if probability >= 0.20:
         prediction = "Defect Predicted"
     else:
         prediction = "No Defect Predicted"
 
-    # Risk level
     if probability < 0.30:
         risk_level = "Low"
     elif probability < 0.70:
@@ -78,13 +79,10 @@ def predict_defect(metrics):
     else:
         risk_level = "High"
 
-    # SHAP temporarily disabled for Vercel deployment
-    top_factors = []
-
     return {
         "prediction": prediction,
         "defect_probability": round(probability * 100, 2),
         "risk_level": risk_level,
-        "top_factors": top_factors
+        "top_factors": []
     }
 
