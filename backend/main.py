@@ -2,6 +2,7 @@ import sys
 import os
 
 from fastapi import FastAPI, UploadFile, File, HTTPException
+from fastapi.responses import FileResponse
 from pydantic import BaseModel
 from fastapi.middleware.cors import CORSMiddleware
 
@@ -106,10 +107,8 @@ class ManualMetrics(BaseModel):
 
 @app.get("/")
 def root():
-
-    return {
-        "message": "AI Software Defect Predictor API is running"
-    }
+    frontend_path = os.path.join(BASE_DIR, "frontend", "index.html")
+    return FileResponse(frontend_path)
 
 
 # ==========================================
