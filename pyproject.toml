@@ -3,15 +3,14 @@ name = "developer-code-defect-prediction"
 version = "1.0.0"
 description = "AI-based software defect prediction using XGBoost"
 requires-python = ">=3.12"
+
 dependencies = [
     "fastapi==0.141.1",
-    "uvicorn",
     "python-multipart",
     "pandas",
     "numpy",
     "scikit-learn",
     "xgboost",
-    "shap",
     "joblib",
     "radon"
 ]
