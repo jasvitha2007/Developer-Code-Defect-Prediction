@@ -1,0 +1,20 @@
+[project]
+name = "developer-code-defect-prediction"
+version = "1.0.0"
+description = "AI-based software defect prediction using XGBoost"
+requires-python = ">=3.12"
+dependencies = [
+    "fastapi",
+    "uvicorn",
+    "python-multipart",
+    "pandas",
+    "numpy",
+    "scikit-learn",
+    "xgboost",
+    "shap",
+    "joblib",
+    "radon"
+]
+
+[tool.vercel]
+entrypoint = "backend.main:app"
