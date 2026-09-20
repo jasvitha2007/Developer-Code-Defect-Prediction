@@ -1,0 +1,479 @@
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: Arial, Helvetica, sans-serif;
+    background: #f5f7fb;
+    color: #111827;
+    min-height: 100vh;
+}
+
+.container {
+    width: 90%;
+    max-width: 1000px;
+    margin: 0 auto;
+    padding: 55px 0;
+}
+
+.header {
+    text-align: center;
+    margin-bottom: 35px;
+}
+
+.logo {
+    font-size: 34px;
+    font-weight: 900;
+    color: #111827;
+    margin-bottom: 10px;
+}
+
+.subtitle {
+    font-size: 16px;
+    color: #6b7280;
+}
+
+.upload-card {
+    background: #ffffff;
+    border: 1px solid #e5e7eb;
+    border-radius: 20px;
+    padding: 45px;
+    text-align: center;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+}
+
+.upload-icon {
+    width: 65px;
+    height: 65px;
+    margin: 0 auto 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    background: #eff6ff;
+    color: #2563eb;
+    font-size: 30px;
+    font-weight: bold;
+}
+
+.upload-card h1 {
+    font-size: 27px;
+    font-weight: 800;
+    margin-bottom: 12px;
+}
+
+.upload-description {
+    max-width: 650px;
+    margin: 0 auto 30px;
+    font-size: 16px;
+    line-height: 1.6;
+    color: #6b7280;
+}
+
+.file-upload {
+    margin-bottom: 22px;
+}
+
+#fileInput {
+    display: none;
+}
+
+.choose-btn {
+    display: inline-block;
+    padding: 13px 24px;
+    background: #eff6ff;
+    color: #2563eb;
+    border: 2px solid #bfdbfe;
+    border-radius: 10px;
+    font-size: 15px;
+    font-weight: 800;
+    cursor: pointer;
+    transition: 0.2s;
+}
+
+.choose-btn:hover {
+    background: #dbeafe;
+}
+
+.file-name {
+    margin-top: 12px;
+    font-size: 14px;
+    font-weight: 600;
+    color: #6b7280;
+}
+
+.analyze-btn {
+    width: 100%;
+    padding: 15px;
+    border: none;
+    border-radius: 10px;
+    background: #2563eb;
+    color: white;
+    font-size: 17px;
+    font-weight: 800;
+    cursor: pointer;
+    transition: 0.2s;
+}
+
+.analyze-btn:hover {
+    background: #1d4ed8;
+}
+
+.analyze-btn:disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+}
+
+.status {
+    min-height: 22px;
+    margin-top: 15px;
+    font-size: 14px;
+    font-weight: 600;
+    color: #6b7280;
+}
+
+.result-card {
+    margin-top: 30px;
+    padding: 32px;
+    background: #ffffff;
+    border: 1px solid #e5e7eb;
+    border-radius: 20px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+}
+
+.hidden {
+    display: none !important;
+}
+
+.result-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 28px;
+    padding-bottom: 20px;
+    border-bottom: 1px solid #e5e7eb;
+}
+
+.result-label {
+    font-size: 28px;
+    font-weight: 900;
+    color: #2563eb;
+    margin-bottom: 7px;
+}
+
+.result-header h2 {
+    margin: 0;
+    font-size: 28px;
+    font-weight: 800;
+    color: #111827;
+}
+
+.analyzed-file {
+    margin-top: 10px;
+    font-size: 15px;
+    font-weight: 600;
+    color: #6b7280;
+}
+
+.status-dot {
+    width: 12px;
+    height: 12px;
+    background: #22c55e;
+    border-radius: 50%;
+    box-shadow: 0 0 0 6px #dcfce7;
+}
+
+.prediction-main {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    padding: 25px;
+    border-radius: 16px;
+    background: #fff7f7;
+    border: 2px solid #fee2e2;
+    margin-bottom: 20px;
+}
+
+.prediction-icon {
+    width: 58px;
+    height: 58px;
+    flex-shrink: 0;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: #fff7ed;
+    color: #f97316;
+    font-size: 27px;
+    font-weight: bold;
+}
+
+.prediction-text {
+    display: flex;
+    flex-direction: column;
+    gap: 7px;
+}
+
+.result-title {
+    font-size: 18px;
+    font-weight: 900;
+    color: #374151;
+}
+
+.prediction-value {
+    font-size: 27px;
+    font-weight: 900;
+    color: #dc2626;
+    line-height: 1.25;
+}
+
+.result-grid {
+    display: grid;
+    grid-template-columns: 2fr 1fr;
+    gap: 20px;
+}
+
+.result-box {
+    text-align: left;
+    padding: 25px;
+    border-radius: 16px;
+    background: #ffffff;
+}
+
+.result-box .result-title {
+    display: block;
+    font-size: 19px;
+    font-weight: 900;
+    color: #374151;
+    margin-bottom: 12px;
+}
+
+.probability-box {
+    border: 2px solid #dbeafe;
+}
+
+.probability-value {
+    font-size: 35px;
+    font-weight: 800;
+    color: #2563eb;
+    line-height: 1.2;
+}
+
+.progress-container {
+    width: 100%;
+    height: 10px;
+    background: #e5e7eb;
+    border-radius: 20px;
+    margin-top: 15px;
+    overflow: hidden;
+}
+
+.progress-bar {
+    height: 100%;
+    width: 0%;
+    background: #2563eb;
+    border-radius: 20px;
+    transition: width 0.8s ease;
+}
+
+.risk-box {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    border: 2px solid #fef3c7;
+}
+
+.risk-badge {
+    display: inline-block;
+    width: fit-content;
+    padding: 9px 17px;
+    border-radius: 30px;
+    font-size: 21px;
+    font-weight: 800;
+}
+
+.risk-low {
+    color: #15803d;
+    background: #dcfce7;
+    border: 2px solid #22c55e;
+}
+
+.risk-medium {
+    color: #b45309;
+    background: #fef3c7;
+    border: 2px solid #f59e0b;
+}
+
+.risk-high {
+    color: #b91c1c;
+    background: #fee2e2;
+    border: 2px solid #ef4444;
+}
+
+.prediction-low {
+    color: #15803d;
+    background: #dcfce7;
+}
+
+.prediction-medium {
+    color: #b45309;
+    background: #fef3c7;
+}
+
+.prediction-high {
+    color: #b91c1c;
+    background: #fee2e2;
+}
+
+.code-analysis {
+    margin-top: 20px;
+    padding: 25px;
+    border: 2px solid #e5e7eb;
+    border-radius: 16px;
+    background: #f9fafb;
+}
+
+.analysis-heading {
+    font-size: 18px;
+    font-weight: 900;
+    color: #374151;
+    margin-bottom: 18px;
+}
+
+.metrics-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 14px;
+}
+
+.metric-item {
+    padding: 16px;
+    background: #ffffff;
+    border: 1px solid #e5e7eb;
+    border-radius: 12px;
+}
+
+.metric-item span {
+    display: block;
+    font-size: 14px;
+    font-weight: 700;
+    color: #6b7280;
+    margin-bottom: 6px;
+}
+
+.metric-item strong {
+    font-size: 20px;
+    font-weight: 800;
+    color: #111827;
+}
+
+.reset-btn {
+    width: 100%;
+    margin-top: 20px;
+    padding: 14px;
+    background: #ffffff;
+    color: #2563eb;
+    border: 2px solid #bfdbfe;
+    border-radius: 10px;
+    font-size: 16px;
+    font-weight: 800;
+    cursor: pointer;
+    transition: 0.2s;
+}
+
+.reset-btn:hover {
+    background: #eff6ff;
+}
+
+
+/* ==========================================
+   SHAP EXPLANATION
+   Keeps the same existing design
+   ========================================== */
+
+.shap-analysis {
+    margin-top: 20px;
+}
+
+.shap-description {
+    margin-top: -8px;
+    margin-bottom: 18px;
+    font-size: 14px;
+    color: #6b7280;
+    line-height: 1.5;
+}
+
+.factor-increase {
+    color: #b45309 !important;
+}
+
+.factor-decrease {
+    color: #15803d !important;
+}
+
+
+@media (max-width: 700px) {
+
+    .container {
+        width: 94%;
+        padding: 30px 0;
+    }
+
+    .logo {
+        font-size: 27px;
+    }
+
+    .upload-card {
+        padding: 30px 20px;
+    }
+
+    .upload-card h1 {
+        font-size: 23px;
+    }
+
+    .result-card {
+        padding: 24px;
+    }
+
+    .result-label {
+        font-size: 23px;
+    }
+
+    .result-header h2 {
+        font-size: 24px;
+    }
+
+    .result-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .metrics-grid {
+        grid-template-columns: 1fr 1fr;
+    }
+
+    .result-box .result-title {
+        font-size: 17px;
+    }
+
+    .probability-value {
+        font-size: 32px;
+    }
+
+    .risk-badge {
+        font-size: 20px;
+    }
+
+    .prediction-value {
+        font-size: 25px;
+    }
+}
+
+
+@media (max-width: 450px) {
+
+    .metrics-grid {
+        grid-template-columns: 1fr;
+    }
+}

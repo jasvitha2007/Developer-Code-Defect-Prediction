@@ -1,0 +1,5 @@
+Metric,Score
+Accuracy,0.7302
+Defect Precision,0.4179
+Defect Recall,0.5
+Defect F1-Score,0.4553

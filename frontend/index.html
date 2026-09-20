@@ -1,0 +1,310 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>AI Software Defect Predictor</title>
+
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <div class="container">
+
+        <header class="header">
+
+            <div class="logo">
+                AI Software Defect Predictor
+            </div>
+
+            <p class="subtitle">
+                ML-powered source code defect prediction using XGBoost
+            </p>
+
+        </header>
+
+
+        <section class="upload-card">
+
+            <div class="upload-icon">
+                ↑
+            </div>
+
+            <h1>Upload Your Python Source Code</h1>
+
+            <p class="upload-description">
+                Upload a Python source code file and let the machine learning
+                model automatically analyze it for potential defects.
+            </p>
+
+            <div class="file-upload">
+
+                <input
+                    type="file"
+                    id="fileInput"
+                    accept=".py"
+                >
+
+                <label
+                    for="fileInput"
+                    class="choose-btn"
+                >
+                    Choose Python File
+                </label>
+
+                <div
+                    id="fileName"
+                    class="file-name"
+                >
+                    No file selected
+                </div>
+
+            </div>
+
+            <button
+                id="analyzeBtn"
+                class="analyze-btn"
+            >
+                Analyze Code
+            </button>
+
+            <div
+                id="status"
+                class="status"
+            ></div>
+
+        </section>
+
+
+        <section
+            id="resultSection"
+            class="result-card hidden"
+        >
+
+            <div class="result-header">
+
+                <div>
+
+                    <div class="result-label">
+                        ANALYSIS COMPLETE
+                    </div>
+
+                    <h2>
+                        Prediction Result
+                    </h2>
+
+                    <div
+                        id="analyzedFile"
+                        class="analyzed-file"
+                    >
+                        File: -
+                    </div>
+
+                </div>
+
+                <div class="status-dot"></div>
+
+            </div>
+
+
+            <div class="prediction-main">
+
+                <div class="prediction-icon">
+                    ⚠
+                </div>
+
+                <div class="prediction-text">
+
+                    <div class="result-title">
+                        PREDICTION
+                    </div>
+
+                    <div
+                        id="prediction"
+                        class="prediction-value"
+                    >
+                        -
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <div class="result-grid">
+
+                <div class="result-box probability-box">
+
+                    <div class="result-title">
+                        DEFECT PROBABILITY
+                    </div>
+
+                    <div
+                        id="probability"
+                        class="probability-value"
+                    >
+                        -
+                    </div>
+
+                    <div class="progress-container">
+
+                        <div
+                            id="probabilityBar"
+                            class="progress-bar"
+                        ></div>
+
+                    </div>
+
+                </div>
+
+
+                <div class="result-box risk-box">
+
+                    <div class="result-title">
+                        RISK LEVEL
+                    </div>
+
+                    <div
+                        id="risk"
+                        class="risk-badge"
+                    >
+                        -
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <!-- SHAP EXPLANATION -->
+
+            <div class="code-analysis shap-analysis">
+
+                <div class="analysis-heading">
+                    TOP RISK FACTORS
+                </div>
+
+                <p class="shap-description">
+                    Features with the strongest influence on this prediction.
+                </p>
+
+                <div
+                    id="shapFactors"
+                    class="metrics-grid"
+                ></div>
+
+            </div>
+
+
+            <!-- CODE ANALYSIS -->
+
+            <div class="code-analysis">
+
+                <div class="analysis-heading">
+                    CODE ANALYSIS
+                </div>
+
+                <div class="metrics-grid">
+
+                    <div class="metric-item">
+
+                        <span>
+                            Lines of Code
+                        </span>
+
+                        <strong id="metricLoc">
+                            -
+                        </strong>
+
+                    </div>
+
+
+                    <div class="metric-item">
+
+                        <span>
+                            Cyclomatic Complexity
+                        </span>
+
+                        <strong id="metricComplexity">
+                            -
+                        </strong>
+
+                    </div>
+
+
+                    <div class="metric-item">
+
+                        <span>
+                            Halstead Volume
+                        </span>
+
+                        <strong id="metricVolume">
+                            -
+                        </strong>
+
+                    </div>
+
+
+                    <div class="metric-item">
+
+                        <span>
+                            Branches
+                        </span>
+
+                        <strong id="metricBranches">
+                            -
+                        </strong>
+
+                    </div>
+
+
+                    <div class="metric-item">
+
+                        <span>
+                            Operators
+                        </span>
+
+                        <strong id="metricOperators">
+                            -
+                        </strong>
+
+                    </div>
+
+
+                    <div class="metric-item">
+
+                        <span>
+                            Operands
+                        </span>
+
+                        <strong id="metricOperands">
+                            -
+                        </strong>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <button
+                id="resetBtn"
+                class="reset-btn"
+            >
+                Analyze Another File
+            </button>
+
+        </section>
+
+    </div>
+
+
+    <script src="script.js"></script>
+
+</body>
+
+</html>
